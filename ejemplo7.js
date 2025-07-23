@@ -71,5 +71,16 @@ function comprobar(evt) {
         ul.classList.add("d-none");
     }
 }
+
+// Firefox si deja meter letras en un campo number, Chrome y Edge no
+function comprobarTecla(evt) {
+    if(evt.key < "0" || evt.key > "9") {
+        evt.preventDefault();
+    }
+}
+
 document.getElementById("formulario")
     .addEventListener("submit", comprobar);
+// keydown es cuando se pulsa una tecla pero aún no se soltó
+document.getElementById("edad")
+    .addEventListener("keydown", comprobarTecla);
