@@ -58,8 +58,8 @@
         <label for="varios19" class="d-block my-2  border-top border-black">que no sea un dígito</label>
         <input type="text" name="varios19" id="varios19" pattern="\D" required value="a">
         <input type="submit" value="enviar" class="d-block my-2 btn btn-primary">
-        <label for="varios20" class="d-block my-2  border-top border-black">al menos 6 letras inglesas, al menos una mayúscula, al menos una minúsculas, al menos un símbolo (letra no inglesa) y al menos un número</label>
-        <input type="text" name="varios19" id="varios20" pattedrn="" required>
+        <label for="varios20" class="d-block my-2  border-top border-black">al menos 6 que incluyan letras minúsculas, mayúsculas, números y símbolos </label>
+        <input type="text" name="varios19" id="varios20" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}" required>
         <label for="varios21" class="d-block my-2  border-top border-black">cualquier cosa al menos tres veces</label>
         <input type="text" name="varios21" id="varios21" pattern=".{3,}" required value="123">
         <label for="varios22" class="d-block my-2  border-top border-black">dos dígitos y tres letras inglesas minúsculas</label>
