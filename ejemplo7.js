@@ -50,7 +50,6 @@ function comprobar(evt) {
     }
     if(provincia.selectedIndex == 0) {
         errores.push("Selecciona la provincia");
-        // Hoy día los navegadores no ponen en rojo el select
         provincia.classList.add("bg-danger-subtle");
         //provincia.style.backgroundColor = "lightsalmon";
     } else {
