@@ -48,7 +48,7 @@ function comprobar(evt) {
         repetirClave.classList.remove("bg-danger-subtle");
         //repetirClave.style.backgroundColor = "inherit";
     }
-    if(provincia.selectedIndex == -1) {
+    if(provincia.selectedIndex == 0) {
         errores.push("Selecciona la provincia");
         // Hoy día los navegadores no ponen en rojo el select
         provincia.classList.add("bg-danger-subtle");
