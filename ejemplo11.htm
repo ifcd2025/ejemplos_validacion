@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo validaciones 10</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+    <script src="ejemplo11.js" defer></script>
+    <style>
+        /* Este es el nombre de la clase por defecto de JustValidate cuando
+        el campo tiene errores */
+        .just-validate-error-field {
+            background-color: rgb(248, 101, 101);
+        }
+        /* Y este para los div con los textos de error que crea */
+        .just-validate-error-label {
+            font-size: .7rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <h1 class="text-center">Validaciones con JavaScript</h1>
+    <h2 class="h6 w-75 text-center m-auto my-2">
+        Usamos la bibloteca JustValidate
+    </h2>
+    <form action="" id="formulario" method="get" class="m-auto w-50 bg-white shadow rounded-3 p-3">
+       <!-- Al poner el input dentro de un div, su mensaje de error
+        aparece dentro de ese div y no al final del formulario.
+        Un div o cualquier otro contenedor -->
+        <div>
+            <label for="nombre" class="d-block my-2">Nombre:</label>
+            <input type="text" name="nombre" id="nombre">
+        </div>
+        <fieldset>
+            <legend class="h6 my-2">Puja minima</legend>
+            <label for="minimo" class="d-block my-2">minimo</label>
+            <input type="number" name="minimo" id="minimo">
+            <label for="maximo" class="d-block my-2">máximo</label>
+            <input type="number" name="maximo" id="maximo">
+        </fieldset>
+        <fieldset>
+            <ul>
+                <li>El nombre y las pujas son requeridas</li>
+                <li>El nombre debe tener entre 6 y 10 caracteres</li>
+                <li></li>
+             </ul>
+        </fieldset>   
+        <input type="submit" value="enviar" class="d-block btn btn-primary my-3">
+
+        <div id="errores"></div>
+    </form>
+    
+</body>
+</html>
