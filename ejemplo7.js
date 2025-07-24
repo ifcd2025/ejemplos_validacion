@@ -74,7 +74,12 @@ function comprobar(evt) {
 
 // Firefox si deja meter letras en un campo number, Chrome y Edge no
 function comprobarTecla(evt) {
-    if(evt.key < "0" || evt.key > "9") {
+    if((evt.key < "0" || evt.key > "9")
+        && evt.key != "Delete"
+        && evt.key != "Backspace"
+        && evt.key != "ArrowRight"
+        && evt.key != "ArrowLeft"
+        ) {
         evt.preventDefault();
     }
 }
