@@ -2,7 +2,7 @@ function comprobar(evt) {
     const nombre = document.getElementById("nombre");
     const edad = document.getElementById("edad");
     const errores = document.getElementById("errores");
-    mensajesError.textContent = "";
+    errores.textContent = "";
     const mensajesError = [];
     if(isVacio(nombre.value)) {
         mensajesError.push("Debes poner el nombre");
