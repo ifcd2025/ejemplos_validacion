@@ -50,3 +50,10 @@ function isNumeroMaximo(numero, maximo) {
 function isNumeroMinimoMaximo(numero, minimo, maximo) {
     return isNumeroMinimo(numero, minimo) && isNumeroMaximo(numero, maximo);
 }
+
+function isFecha(valor) {
+    if(/^(\d{1,2}[-\/]){2}\d{4}$/.test(valor) == false) {
+        return false;
+    }
+
+}
