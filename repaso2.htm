@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title></title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Validación con JavaScript usando las validaciones HTML</h1>
+    <p>Debemos poner el atributo novalidate en el formulario</p>
+    <form action="" class="w-25 bg-secondary m-3 p-2" novalidate>
+        <label for="titular">Titular</label>
+        <input type="text" id="titular" name="titular" 
+        class="form-control mb-2" required minlength="5">
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono"
+         class="form-control mb-2" required pattern="\d{3}-\d{3}-\d{3}" placeholder="999-999-999">
+        <label for="fechaAlta">Fecha alta</label>
+        <input type="date" id="fechaAlta" name="fechaAlta" class="form-control mb-2" required>
+        <label for="saldoInicial">Saldo inicial</label>
+        <input type="number" id="saldoInicial" 
+            name="saldoInicial" class="form-control mb-2" required min="100">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" class="form-control mb-2" required>
+        <input type="submit" value="dar de alta" class="btn btn-primary">
+
+        <div>Todos los datos son obligatorios, el titular que tenga al menos 5 caracteres,
+            el saldo inicial al menos de 100 euros, el teléfono de la forma 999-999-999
+        </div>
+    </form>
+    <script>
+        document.querySelector("form").addEventListener("submit", comprobar);
+
+        function comprobar(evt) {
+            const errores = [];
+            const titular = document.getElementById("titular");
+            // chkecValidiy comprueba las validaciones HTML
+            if(titular.checkValidity() == false) {
+                // Si queremos que muestre el propio mensaje del navegador
+                errores.push(titular.validationMessage);
+                // Si queréis diferenciar los posibles errores podéis usar
+                /*if(titular.validity.tooShort) {
+
+                }*/
+            }
+            const telefono = document.getElementById("telefono");
+            if(telefono.checkValidity() == false) {
+                errores.push(telefono.validationMessage);
+            }
+            const fechaAlta = document.getElementById("fechaAlta");
+            if(fechaAlta.checkValidity() == false) {
+                errores.push(fechaAlta.validationMessage);
+            }       
+            const saldoInicial = document.getElementById("saldoInicial");
+            if(saldoInicial.checkValidity() == false) {
+                errores.push(saldoInicial.validationMessage);
+            }     
+            const email = document.getElementById("email");
+            if(email.checkValidity() == false) {
+                errores.push(email.validationMessage);
+            }        
+            if(errores == []) {
+                evt.preventDefault(); // cancelamos el envío
+                const ul = document.createElement("ul");
+                document.body.appendChild(ul);
+                for(const error of errores) {
+                    const li = document.createElement("li");
+                    ul.appendChild(li);
+                    li.textContent = error;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
