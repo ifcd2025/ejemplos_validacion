@@ -13,8 +13,12 @@
     </style>
 </head>
 <body>
-    <h1>Validación con JavaScript usando las validaciones HTML</h1>
-    <p>Debemos poner el atributo novalidate en el formulario</p>
+    <h1>Validación con JavaScript puro </h1>
+    <p>Debemos poner el atributo novalidate en el formulario o no poner 
+        required, min, dejar todos tipo text,....<br>
+        Podemos poner el atributo novalidate en el formulario para que
+        ni siquera valide si un type email es email,...
+    </p>
     <form action="" class="w-25 bg-secondary m-3 p-2" novalidate>
         <label for="titular">Titular</label>
         <input type="text" id="titular" name="titular" 
@@ -41,32 +45,27 @@
         function comprobar(evt) {
             const errores = [];
             const titular = document.getElementById("titular");
-            // chkecValidiy comprueba las validaciones HTML
-            if(titular.checkValidity() == false) {
-                // Si queremos que muestre el propio mensaje del navegador
-                errores.push(titular.validationMessage);
-                // Si queréis diferenciar los posibles errores podéis usar
-                /*if(titular.validity.tooShort) {
-
-                }*/
+            // No olvidarse hacer el trim para quitar posibles espacios a los lados
+            // En los repaso1.htm y repaso2.htm no daría error poner solo espacios
+            if(/^.{5,}$/.test(titular.value.trim()) == false) {
+                errores.push("Falta el titular o no tiene 5 caracteres mínimo");
             }
             const telefono = document.getElementById("telefono");
-            if(telefono.checkValidity() == false) {
-                // Mejor mensajes propios
-                // errores.push("Falta el teléfono o no es correcto");
-                errores.push(telefono.validationMessage);
+            if(/^\d{3}-\d{3}-\d{3}$/.test(telefono.value) == false) {
+                errores.push("Falta el teléfono o no es correcto");
             }
             const fechaAlta = document.getElementById("fechaAlta");
-            if(fechaAlta.checkValidity() == false) {
-                errores.push(fechaAlta.validationMessage);
+            if(fechaAlta.valueAsDate == null) {
+                errores.push("Elige la fecha");
             }       
             const saldoInicial = document.getElementById("saldoInicial");
-            if(saldoInicial.checkValidity() == false) {
-                errores.push(saldoInicial.validationMessage);
+            if(/[1-9]\d{2,}/.test(saldoInicial.value)) {
+                errores.push("falta el saldo o es menor que 100");
             }     
             const email = document.getElementById("email");
-            if(email.checkValidity() == false) {
-                errores.push(email.validationMessage);
+            // Una validación demasiado simple que no admite muchos emails válidos
+            if(/^[a-z]+@[a-z]+(\.[a-z]+)?$/.test(email.value) == false) {
+                errores.push("Falta el email o es incorrecto");
             }        
             if(errores != []) {
                 evt.preventDefault(); // cancelamos el envío
