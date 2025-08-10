@@ -16,7 +16,7 @@ function comprobar(evt) {
     } else if(isNumeroMinimoMaximo(edad.value, 18, 100) == false) {
         mensajesError.push("La edad debe estar entre 18 y 100");
     }    
-    if(mensajesError != []) {
+    if(mensajesError.length != 0)) {
         evt.preventDefault();
         for (const mensaje of mensajesError) {
             const p = document.createElement("p");
