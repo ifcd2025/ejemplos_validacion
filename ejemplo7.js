@@ -58,7 +58,7 @@ function comprobar(evt) {
     }
     
     const ul = document.getElementById("errores");
-    if(errores != []) { // Vemos si errores tiene algo
+    if(errores.length != 0) { // Vemos si errores tiene algo
         evt.preventDefault();
         ul.classList.remove("d-none");
         ul.textContent = "";
